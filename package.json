@@ -1,0 +1,25 @@
+{
+  "name": "discountapp",
+  "version": "1.0.0",
+  "description": "finding deals",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ji Baik",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
