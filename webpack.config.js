@@ -4,7 +4,7 @@ const path = require("path");
 let config = {
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "./dist")
+    path: path.resolve(__dirname, "./dist"),
     filename: "bundle.js"
   },
   module: {
@@ -19,7 +19,14 @@ let config = {
         loader: ["style-loader", "css-loader", "sass-loader"]
       }
       ]
-    }
+    },
+  devServer: {
+    contentBase: path.resolve(__dirname, "./src"),
+    historyApiFallback: true,
+    inline: true,
+    open: false
+  },
+  devtool: 'eval-source-map'
 }
 
 module.exports = config;
