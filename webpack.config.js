@@ -3,14 +3,41 @@ const path = require("path");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssets = require("optimize-css-assets-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 let config = {
-  entry: "./src/index.js",
+  entry: ["webpack-hot-middleware/client?reload=true", "./src/index.js"],
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/dist/"
   },
-  plugins: [new ExtractTextWebpackPlugin("styles.css")],
+  resolve: {
+    // These options change how modules are resolved
+    extensions: [
+      ".js",
+      ".jsx",
+      ".json",
+      ".scss",
+      ".css",
+      ".jpeg",
+      ".jpg",
+      ".gif",
+      ".png"
+    ], // Automatically resolve certain extensions
+    alias: {
+      // Create aliases
+      images: path.resolve(__dirname, "src/assets/images") // src/assets/images alias
+    }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    }),
+    new ExtractTextWebpackPlugin("styles.css"),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ],
   module: {
     rules: [
       {
@@ -58,12 +85,6 @@ let config = {
         include: __dirname
       }
     ]
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, "./src"),
-    historyApiFallback: true,
-    inline: true,
-    open: false
   },
   devtool: "eval-source-map"
 };
