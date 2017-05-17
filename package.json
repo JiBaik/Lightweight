@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev nodemon app.js",
+    "dev": "NODE_ENV=dev node app.js",
     "build": "webpack",
     "production": "NODE_ENV=production webpack"
   },
@@ -35,6 +35,7 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "dependencies": {
+    "antd": "^2.10.1",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-session": "^1.15.2",

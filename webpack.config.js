@@ -51,7 +51,7 @@ let config = {
       },
       {
         test: /\.css$/,
-        loader: ["style-loader", "css-loader", "postcss-loader"]
+        loader: ["style-loader", "css-loader"]
       },
       {
         test: /\.jsx$/, // all files ending with .jsx
